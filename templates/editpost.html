@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+
+}
+caption {
+    caption-side: top;
+    color: black;
+    font-size:24px;
+}
+    </style>
+
+    {%  if allactivites %}
+    <table style="width:100%">
+    <caption> List of Activities</caption>
+    <tr>
+        <th>Activity Name</th>
+        <th>Details</th>
+        <th>Points Value</th>
+        <th>Max Times</th>
+        <th>Category</th>
+        <th>Post/Add Activity</th>
+    </tr>
+        {%  for activity in allactivites %}
+        <tr>
+            <th>{{ activity.name }} </th>
+            <th>{{ activity.details }} </th>
+            <th>{{ activity.value }} </th>
+            <th>{{ activity.max_complete }} </th>
+            <th>{{ activity.group }} </th>
+            <th> <a href="{{ activity.get_absolute_url }}"> +</a> </th>
+        </tr><
+        {% endfor %}
+    </table>
+    {%  else %}
+    <p> No Activities</p>
+    {% endif %}
+{% endblock %}

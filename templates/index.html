@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+
+}
+caption {
+    caption-side: top;
+    color: black;
+    font-size:24px;
+}
+    </style>
+  <h1>Wellness Program Home</h1>
+  <h2>Dynamic content</h2>
+  <ul>
+    <li><strong>Activities:</strong> {{ num_activities }}</li>
+  </ul>
+
+    {%  if activity_list %}
+    <table style="width:100%">
+    <caption> Completed Activity List</caption>
+    <tr>
+        <th>Activity Name</th>
+        <th>Times Completed</th>
+        <th>Points Value</th>
+        <th>Points Earned</th>
+        <th>Category</th>
+    </tr>
+        {%  for activity in activity_list %}
+        <tr>
+            <th>{{ activity.activity__name }} </th>
+            <th>{{ activity.count }} </th>
+            <th>{{ activity.activity__value }} </th>
+            <th>{{ activity.earned }} </th>
+            <th>{{ activity.activity__group }} </th>
+        </tr><
+        {% endfor %}
+    </table>
+    {%  else %}
+    <p> You have no activities u about to be broke</p>
+    {% endif %}
+{% endblock %}

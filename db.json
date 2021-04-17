@@ -1,0 +1,779 @@
+[
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "FT Employees",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$vAuKBZNqXSYh$0kOw/EU1G26rSyynhLAQphbqarwf7+rOuo4+fkbbQnw=",
+    "last_login": "2021-03-31T02:02:12.408Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "davidfinch102@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-03-29T15:17:53.139Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$eo1xz78WnEZ7$WbsvhfGdFywhmmL/504ez6kl3KERuhzwwpPYjsfIHVw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "DavidFinch",
+    "first_name": "David",
+    "last_name": "Finch",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-03-29T15:43:00Z",
+    "groups": [
+      [
+        "FT Employees"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$hAbBbMgVr455$REaYoqd92zOvUSmaWqeBybv8s9xkUe/DZ4bFoOsxn/4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "AndyHarbert",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-03-31T02:03:26Z",
+    "groups": [
+      [
+        "FT Employees"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$sXKxH0SJhWc3$eOPdlEKlDOXe+CGL7c2jI8yBpNDi8sfIZ4GhTqCbLjI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "AndrewDolan",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-03-31T02:03:49Z",
+    "groups": [
+      [
+        "FT Employees"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "4kbwe4eg451maumz97uhw9r6a3pzsahf",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSFYIz4p0-cMaIHd4CTCkrErK3ePkFwk7ZuZd4iI-1bj3mmNcxFXocXld0uYX9QGKE9sj0XmpW3rnORQ5Em7vC-F3rfT_Tuo2OuotcdMLlgmb8GUwkopS8STy-y18RpAhWAsm4AB0E6sLTkFiI4hFfH5AugVN-A:1lQteT:b-qkRm_QWxvqsSLNWalQSwoeh_7Bunm_qSEeXXXrJ2o",
+    "expire_date": "2021-04-12T15:18:01.782Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "jhbs41oeekppxnqkra8f47guci457thp",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSFYIz4p0-cMaIHd4CTCkrErK3ePkFwk7ZuZd4iI-1bj3mmNcxFXocXld0uYX9QGKE9sj0XmpW3rnORQ5Em7vC-F3rfT_Tuo2OuotcdMLlgmb8GUwkopS8STy-y18RpAhWAsm4AB0E6sLTkFiI4hFfH5AugVN-A:1lRQBQ:9nfXhcyrcJ0CPymXtnnDVRes7g2H3RQVW2uQUzXHT7E",
+    "expire_date": "2021-04-14T02:02:12.564Z"
+  }
+},
+{
+  "model": "wellness.profile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "occupation": "",
+    "start_date": null,
+    "ftid": ""
+  }
+},
+{
+  "model": "wellness.profile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "DavidFinch"
+    ],
+    "occupation": "Programmer",
+    "start_date": "2021-03-29",
+    "ftid": "retrerewre"
+  }
+},
+{
+  "model": "wellness.profile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "AndyHarbert"
+    ],
+    "occupation": "",
+    "start_date": null,
+    "ftid": ""
+  }
+},
+{
+  "model": "wellness.profile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "AndrewDolan"
+    ],
+    "occupation": "",
+    "start_date": null,
+    "ftid": ""
+  }
+},
+{
+  "model": "wellness.activity",
+  "pk": 1,
+  "fields": {
+    "name": "Annual Physical - Qualifier for Wellness Stipend",
+    "group": "PH",
+    "max_complete": 1,
+    "value": 200,
+    "max_points": 200,
+    "frequency": 1,
+    "time_freq": "YER"
+  }
+},
+{
+  "model": "wellness.activity",
+  "pk": 2,
+  "fields": {
+    "name": "Blood/Plasma Donation",
+    "group": "PH",
+    "max_complete": 5,
+    "value": 20,
+    "max_points": 100,
+    "frequency": 5,
+    "time_freq": "YER"
+  }
+},
+{
+  "model": "wellness.activity",
+  "pk": 3,
+  "fields": {
+    "name": "Classes for Professional Enhancement",
+    "group": "OC",
+    "max_complete": 8,
+    "value": 25,
+    "max_points": 200,
+    "frequency": 1,
+    "time_freq": "DAY"
+  }
+},
+{
+  "model": "wellness.activity",
+  "pk": 4,
+  "fields": {
+    "name": "Create and Follow a Monthly Budget",
+    "group": "FI",
+    "max_complete": 12,
+    "value": 2,
+    "max_points": 24,
+    "frequency": 1,
+    "time_freq": "MTH"
+  }
+},
+{
+  "model": "wellness.activity",
+  "pk": 5,
+  "fields": {
+    "name": "Diversity, Equity and Inclusion Activity",
+    "group": "SP",
+    "max_complete": 5,
+    "value": 20,
+    "max_points": 100,
+    "frequency": 1,
+    "time_freq": "DAY"
+  }
+},
+{
+  "model": "wellness.activity",
+  "pk": 6,
+  "fields": {
+    "name": "Pledge to Limit Alcohol Intake",
+    "group": "PH",
+    "max_complete": 1,
+    "value": 20,
+    "max_points": 20,
+    "frequency": 1,
+    "time_freq": "YER"
+  }
+},
+{
+  "model": "wellness.activity",
+  "pk": 7,
+  "fields": {
+    "name": "Recyle Participation at Home/Work",
+    "group": "NA",
+    "max_complete": 50,
+    "value": 2,
+    "max_points": 100,
+    "frequency": 4,
+    "time_freq": "MTH"
+  }
+},
+{
+  "model": "wellness.activity",
+  "pk": 8,
+  "fields": {
+    "name": "Vaccinations/Immunizations",
+    "group": "PE",
+    "max_complete": 4,
+    "value": 20,
+    "max_points": 80,
+    "frequency": 2,
+    "time_freq": "DAY"
+  }
+},
+{
+  "model": "wellness.completedactivity",
+  "pk": 1,
+  "fields": {
+    "comment": "kughviuvgvu",
+    "date": "2021-03-31T03:13:29Z",
+    "user": 2,
+    "activity": 1
+  }
+},
+{
+  "model": "wellness.completedactivity",
+  "pk": 2,
+  "fields": {
+    "comment": "juibnuivbiubyhnjn",
+    "date": "2021-03-31T03:13:46Z",
+    "user": 2,
+    "activity": 2
+  }
+},
+{
+  "model": "wellness.completedactivity",
+  "pk": 3,
+  "fields": {
+    "comment": "jnblkjb",
+    "date": "2021-03-26T03:13:57Z",
+    "user": 2,
+    "activity": 2
+  }
+},
+{
+  "model": "wellness.completedactivity",
+  "pk": 4,
+  "fields": {
+    "comment": "hugivugyhb",
+    "date": "2021-04-01T03:14:15Z",
+    "user": 3,
+    "activity": 1
+  }
+},
+{
+  "model": "wellness.completedactivity",
+  "pk": 5,
+  "fields": {
+    "comment": "idk",
+    "date": "2021-03-31T15:28:00Z",
+    "user": 4,
+    "activity": 2
+  }
+},
+{
+  "model": "wellness.completedactivity",
+  "pk": 6,
+  "fields": {
+    "comment": "srasfdsgdffdg",
+    "date": "2021-03-01T16:28:19Z",
+    "user": 4,
+    "activity": 1
+  }
+},
+{
+  "model": "wellness.reminders",
+  "pk": 1,
+  "fields": {
+    "name": "ruifgbuidfnjild",
+    "text": "NIOEAfgiodfid",
+    "start": "2021-03-29",
+    "end": "2021-05-29",
+    "interval": 1,
+    "check": true
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2021-03-29T15:37:20.277Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "reminders"
+    ],
+    "object_id": "1",
+    "object_repr": "ruifgbuidfnjild",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2021-03-29T15:43:00.939Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "DavidFinch",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2021-03-29T15:43:17.714Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "DavidFinch",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2021-03-29T15:43:27.964Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "profile"
+    ],
+    "object_id": "2",
+    "object_repr": "DavidFinch",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Occupation\", \"Start date\", \"Ftid\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2021-03-31T02:02:28.538Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "FT Employees",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2021-03-31T02:03:26.393Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "AndyHarbert",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2021-03-31T02:03:49.120Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "4",
+    "object_repr": "AndrewDolan",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2021-03-31T03:03:39.929Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "activity"
+    ],
+    "object_id": "1",
+    "object_repr": "Annual Physical - Qualifier for Wellness Stipend, Group: PH, Max Completions: 1, Value: 200",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2021-03-31T03:04:59.909Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "activity"
+    ],
+    "object_id": "2",
+    "object_repr": "Blood/Plasma Donation, Group: PH, Max Completions: 5, Value: 20",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2021-03-31T03:06:41.933Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "activity"
+    ],
+    "object_id": "3",
+    "object_repr": "Classes for Professional Enhancement, Group: OC, Max Completions: 8, Value: 25",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2021-03-31T03:07:34.469Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "activity"
+    ],
+    "object_id": "4",
+    "object_repr": "Create and Follow a Monthly Budget, Group: FI, Max Completions: 12, Value: 2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2021-03-31T03:08:50.551Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "activity"
+    ],
+    "object_id": "5",
+    "object_repr": "Diversity, Equity and Inclusion Activity, Group: SP, Max Completions: 5, Value: 20",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2021-03-31T03:09:28.372Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "activity"
+    ],
+    "object_id": "4",
+    "object_repr": "Create and Follow a Monthly Budget, Group: FI, Max Completions: 12, Value: 2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Frequency\", \"Time freq\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2021-03-31T03:10:33.340Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "activity"
+    ],
+    "object_id": "6",
+    "object_repr": "Pledge to Limit Alcohol Intake, Group: PH, Max Completions: 1, Value: 20",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2021-03-31T03:11:18.580Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "activity"
+    ],
+    "object_id": "7",
+    "object_repr": "Recyle Participation at Home/Work, Group: NA, Max Completions: 50, Value: 2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2021-03-31T03:12:27.445Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "activity"
+    ],
+    "object_id": "8",
+    "object_repr": "Vaccinations/Immunizations, Group: PE, Max Completions: 4, Value: 20",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2021-03-31T03:12:56.466Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "DavidFinch",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2021-03-31T03:13:07.835Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "4",
+    "object_repr": "AndrewDolan",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2021-03-31T03:13:13.067Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "AndyHarbert",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2021-03-31T03:13:36.683Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "completedactivity"
+    ],
+    "object_id": "1",
+    "object_repr": "DavidFinch, Annual Physical - Qualifier for Wellness Stipend, 2021-03-30 22:13:29-05:00",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2021-03-31T03:13:49.727Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "completedactivity"
+    ],
+    "object_id": "2",
+    "object_repr": "DavidFinch, Blood/Plasma Donation, 2021-03-30 22:13:46-05:00",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2021-03-31T03:14:01.872Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "completedactivity"
+    ],
+    "object_id": "3",
+    "object_repr": "DavidFinch, Blood/Plasma Donation, 2021-03-25 22:13:57-05:00",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2021-03-31T03:14:15.916Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "completedactivity"
+    ],
+    "object_id": "4",
+    "object_repr": "AndyHarbert, Annual Physical - Qualifier for Wellness Stipend, 2021-03-31 22:14:15-05:00",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2021-03-31T15:28:11.970Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "completedactivity"
+    ],
+    "object_id": "5",
+    "object_repr": "AndrewDolan, Blood/Plasma Donation, 2021-03-31 10:28:00-05:00",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2021-03-31T15:28:23.316Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "wellness",
+      "completedactivity"
+    ],
+    "object_id": "6",
+    "object_repr": "AndrewDolan, Annual Physical - Qualifier for Wellness Stipend, 2021-03-01 10:28:19-06:00",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+}
+]
