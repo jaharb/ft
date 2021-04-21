@@ -7,7 +7,7 @@ table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
-th, td {
+td {
     padding: 5px;
 
 }
@@ -22,21 +22,21 @@ caption {
     <table style="width:100%">
     <caption> List of Activities</caption>
     <tr>
-        <th>Activity Name</th>
-        <th>Details</th>
-        <th>Points Value</th>
-        <th>Max Times</th>
-        <th>Category</th>
-        <th>Post/Add Activity</th>
+        <td>Activity Name</td>
+        <td>Details</td>
+        <td>Points Value</td>
+        <td>Max Times</td>
+        <td>Category</td>
+        <td>Post/Add Activity</td>
     </tr>
         {%  for activity in allactivites %}
         <tr>
-            <th>{{ activity.name }} </th>
-            <th>{{ activity.details }} </th>
-            <th>{{ activity.value }} </th>
-            <th>{{ activity.max_complete }} </th>
-            <th>{{ activity.group }} </th>
-            <th> <a href="{{ activity.get_absolute_url }}"> +</a> </th>
+            <td>{{ activity.name }} </td>
+            <td>{{ activity.details }} </td>
+            <td>{{ activity.value }} </td>
+            <td>{{ activity.max_complete }} </td>
+            <td>{{ activity.group }} </td>
+            <td scope="row"> <a href="{% url 'postact' activity.id %}"> +</a> </td>
         </tr><
         {% endfor %}
     </table>

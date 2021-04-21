@@ -86,21 +86,21 @@ def postact(request, pk):
     }
     return render(request, 'postact.html', context=context)
 
-def editpost(request, user_id, act_id):
+def editpost(request, act_id):
     home_user = Profile.objects.get(pk=1)
-    activity = CompletedActivity.objects.get(user=home_user, activity=act_id)
+    activity = CompletedActivity.objects.filter(user=home_user, activity=act_id)[0]
     if request.method == 'POST':
 
         form = PostActivity(request.POST)
         if form.is_valid():
-            activity.comment = form.comment
-            activity.date = form.date
+            activity.comment = form.cleaned_data["comment"]
+            activity.date = form.cleaned_data["date"]
 
             return HttpResponseRedirect(reverse('index'))
     else:
         from datetime import timezone
 
-        form = PostActivity(initial={'date': "", 'comment': ""})
+        form = PostActivity(initial={'date': activity.date, 'comment': activity.comment})
 
     context = {
         'huser': home_user,

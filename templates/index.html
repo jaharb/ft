@@ -27,19 +27,20 @@ caption {
     <table style="width:100%">
     <caption> Completed Activity List</caption>
     <tr>
-        <th>Activity Name</th>
-        <th>Times Completed</th>
-        <th>Points Value</th>
-        <th>Points Earned</th>
-        <th>Category</th>
+        <td>Activity Name</td>
+        <td>Times Completed</td>
+        <td>Points Value</td>
+        <td>Points Earned</td>
+        <td>Category</td>
     </tr>
         {%  for activity in activity_list %}
         <tr>
-            <th>{{ activity.activity__name }} </th>
-            <th>{{ activity.count }} </th>
-            <th>{{ activity.activity__value }} </th>
-            <th>{{ activity.earned }} </th>
-            <th>{{ activity.activity__group }} </th>
+            <td>{{ activity.activity__name }} </td>
+            <td>{{ activity.count }} </td>
+            <td>{{ activity.activity__value }} </td>
+            <td>{{ activity.earned }} </td>
+            <td>{{ activity.activity__group }} </td>
+        <td scope="row"> <a href="{%  url 'editpost' activity.activity_id %}">Edit</a></td>
         </tr><
         {% endfor %}
     </table>
