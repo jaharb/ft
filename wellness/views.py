@@ -91,22 +91,23 @@ def editpost(request, act_id):
     activity = CompletedActivity.objects.filter(user=home_user, activity=act_id)[0]
     if request.method == 'POST':
 
-        form = PostActivity(request.POST)
+        form = PostActivity(request.POST, home_user, activity)
         if form.is_valid():
-            activity.comment = form.cleaned_data["comment"]
-            activity.date = form.cleaned_data["date"]
-
+            form = PostActivity(home_user, activity)
+            form.save(home_user, activity)
             return HttpResponseRedirect(reverse('index'))
+
     else:
         from datetime import timezone
+        form = PostActivity(home_user, activity)
+        context = {
+            'huser': home_user,
+            'Lname': home_user.user.last_name,
+            'Fname': home_user.user.first_name,
+            'form': form,
+            'activity': activity,
+        }
+        return render(request, 'editpost.html', context=context)
 
-        form = PostActivity(initial={'date': activity.date, 'comment': activity.comment})
 
-    context = {
-        'huser': home_user,
-        'Lname': home_user.user.last_name,
-        'Fname': home_user.user.first_name,
-        'form': form,
-        'activity': activity,
-    }
-    return render(request, 'postact.html', context=context)
+
