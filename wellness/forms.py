@@ -1,16 +1,17 @@
 import datetime
+
 from django.utils import timezone
 from wellness.models import CompletedActivity, Activity, Profile
 from django import forms
 
 
-class PostActivity(forms.ModelForm):
-    def __init__(self, theUser, theActivity, *args, **kwargs):
+class PostActivity(forms.Form):
+    def __init__(self ,theUser, theActivity, *args, **kwargs):
         super().__init__(*args, **kwargs)
         postings_list = CompletedActivity.objects.filter(user=theUser, activity=theActivity)
         for i in range(len(postings_list)):
-            date = 'postings_list_%s' % (i,)
-            comment = 'postings_list_%s' % (i,)
+            date = 'Posting_Date_%s' % (i + 1,)
+            comment = 'Posting_Comment_%s' % (i + 1,)
             try:
                 self.initial[date] = postings_list[i].date
             except:
@@ -19,10 +20,13 @@ class PostActivity(forms.ModelForm):
                 self.initial[comment] = postings_list[i].comment
             except:
                 self.initial[comment] = ""
-            date = 'postings_list_%s' % (1 + i,)
-            comment = 'postings_list_%s' % (1 + i,)
+            date = 'Posting_Date_%s' % (i + 1,)
             self.fields[date] = forms.DateTimeField(help_text="Enter a date between now.")
+            comment = 'Posting_Comment_%s' % (i + 1,)
             self.fields[comment] = forms.CharField(help_text="Like and Subscribe and leave a comment right here.")
+
+
+
 
 
     def clean_date(self):

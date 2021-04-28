@@ -66,16 +66,16 @@ def postact(request, pk):
     activity = Activity.objects.get(pk=pk)
     if request.method == 'POST':
 
-        form = PostActivity(request.POST)
+        form = PostActivity(home_user, activity)
         if form.is_valid():
-            new = CompletedActivity(activity=activity, user=home_user, comment=form.cleaned_data['comment'], \
+            new = CompletedActivity(activity=activity, user=home_user, comment=form.cleaned_data['comment'],
                                     date=form.cleaned_data['date'])
             new.save()
             return HttpResponseRedirect(reverse('post'))
     else:
         from datetime import timezone
 
-        form = PostActivity(initial={'date': "", 'comment': ""})
+        form = PostActivity(theUser=home_user, theActivity=activity,initial={'date': "", 'comment': ""})
 
     context = {
         'huser': home_user,
@@ -88,25 +88,25 @@ def postact(request, pk):
 
 def editpost(request, act_id):
     home_user = Profile.objects.get(pk=1)
+    act = Activity.objects.filter(pk=act_id)[0]
     activity = CompletedActivity.objects.filter(user=home_user, activity=act_id)[0]
     if request.method == 'POST':
-
-        form = PostActivity(request.POST, home_user, activity)
+        form = PostActivity(home_user, activity)
         if form.is_valid():
             form = PostActivity(home_user, activity)
             form.save(home_user, activity)
             return HttpResponseRedirect(reverse('index'))
+        else:
+            from datetime import timezone
+            form = PostActivity(home_user, activity)
+            context = {
+                'huser': home_user,
+                'Lname': home_user.user.last_name,
+                'Fname': home_user.user.first_name,
+                'form': form,
+                'activity': act,
+            }
 
-    else:
-        from datetime import timezone
-        form = PostActivity(home_user, activity)
-        context = {
-            'huser': home_user,
-            'Lname': home_user.user.last_name,
-            'Fname': home_user.user.first_name,
-            'form': form,
-            'activity': activity,
-        }
         return render(request, 'editpost.html', context=context)
 
 

@@ -1,8 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
-    <style>
+        <style>
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -17,30 +16,12 @@ caption {
     font-size:24px;
 }
     </style>
-
-    {%  if allactivites %}
-    <table style="width:100%">
-    <caption> List of Activities</caption>
-    <tr>
-        <th>Activity Name</th>
-        <th>Details</th>
-        <th>Points Value</th>
-        <th>Max Times</th>
-        <th>Category</th>
-        <th>Post/Add Activity</th>
-    </tr>
-        {%  for activity in allactivites %}
-        <tr>
-            <th>{{ activity.name }} </th>
-            <th>{{ activity.details }} </th>
-            <th>{{ activity.value }} </th>
-            <th>{{ activity.max_complete }} </th>
-            <th>{{ activity.group }} </th>
-            <th> <a href="{{ activity.get_absolute_url }}"> +</a> </th>
-        </tr><
-        {% endfor %}
+    <h2> {{ activity.name }}</h2>
+    <form action="" method="post">
+    {% csrf_token %}
+     <table>
+    {{ form.as_table }}
     </table>
-    {%  else %}
-    <p> No Activities</p>
-    {% endif %}
+    <input type="submit" value="Submit">
+    </form>
 {% endblock %}
