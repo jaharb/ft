@@ -3,7 +3,7 @@ from django.db.models import Count
 from django.db.models import Sum
 from django.urls import reverse
 import datetime
-from wellness.forms import PostActivity
+from wellness.forms import PostActivity, EditActivity
 from django.http import HttpResponseRedirect
 from wellness.models import Activity, CompletedActivity, Profile
 
@@ -88,26 +88,25 @@ def postact(request, pk):
 
 def editpost(request, act_id):
     home_user = Profile.objects.get(pk=1)
-    act = Activity.objects.filter(pk=act_id)[0]
-    activity = CompletedActivity.objects.filter(user=home_user, activity=act_id)[0]
+    act = Activity.objects.get(pk=act_id)
     if request.method == 'POST':
-        form = PostActivity(home_user, activity)
+        form = EditActivity(home_user, act)
         if form.is_valid():
-            form = PostActivity(home_user, activity)
-            form.save(home_user, activity)
+            form = EditActivity(home_user, act, request.GET)
+            form.save(home_user, act)
             return HttpResponseRedirect(reverse('index'))
-        else:
-            from datetime import timezone
-            form = PostActivity(home_user, activity)
-            context = {
-                'huser': home_user,
-                'Lname': home_user.user.last_name,
-                'Fname': home_user.user.first_name,
-                'form': form,
-                'activity': act,
+    else:
+        from datetime import timezone
+        form = EditActivity(home_user, act)
+        context = {
+            'huser': home_user,
+            'Lname': home_user.user.last_name,
+            'Fname': home_user.user.first_name,
+            'form': form,
+            'activity': act,
             }
 
-        return render(request, 'editpost.html', context=context)
+        return render(request, 'postact.html', context=context)
 
 
 
