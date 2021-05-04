@@ -22,9 +22,11 @@ class PostActivity(forms.Form):
             except:
                 self.initial[comment] = ""
             date = 'Posting_Date_%s' % (i + 1,)
-            self.fields[date] = forms.DateTimeField(help_text="Enter a date between now.")
+            self.fields[date] = forms.DateTimeField(help_text="Enter a Date.", required=False)
             comment = 'Posting_Comment_%s' % (i + 1,)
-            self.fields[comment] = forms.CharField(help_text="Like and Subscribe and leave a comment right here.")
+            self.fields[comment] = forms.CharField(help_text="Enter a comment.", required=False)
+        date = forms.DateField(help_text="Enter a date.", required=False)
+        comment = forms.CharField(help_text="Enter a comment", required=False)
 
 
 
@@ -44,41 +46,34 @@ class PostActivity(forms.Form):
 
     def clean(self):
         postings = []
-        i = 0
-        comment_field_name = f'comment_{i}'
-        date_field_name = f'comment_{i}'
-        while self.cleaned_data.get(comment_field_name):
-            comment = self.cleaned_data[comment_field_name]
-            if comment in postings:
-                self.add_error(comment_field_name, 'Duplicate')
-            else:
-                postings.append(comment)
-            i += 1
-            comment_field_name = f'comment_{i}'
+        i = 1
+        date_field_name = f'Posting_Date_{i}'
+        comment_field_name = f'Posting_Comment_{i}'
         while self.cleaned_data.get(date_field_name):
-            date = self.clean_date()
-            if date in postings:
-                self.add_error(comment_field_name, 'Duplicate')
-            else:
-                postings.append(date)
+            cleaned_date = self.cleaned_data[date_field_name]
+            cleaned_comment = self.cleaned_data[comment_field_name]
+            this_post = PostingData(cleaned_date, cleaned_comment)
+            postings.append(this_post)
             i += 1
-            date_field_name = f'date_{i}'
+            date_field_name = f'Posting_Date_{i}'
+            comment_field_name = f'Posting_Comment_{i}'
         self.cleaned_data['postings'] = postings
 
     def save(self, theUser, theActivity):
-        posting = self.instance
-        posting.date = self.cleaned_data["date"]
-        posting.comment = self.cleaned_data["comment"]
-
-        posting.postings_set.all(user=theUser,activity=theActivity).delete()
+        CompletedActivity.objects.filter(user=theUser, activity=theActivity).delete()
         for posting in self.cleaned_data['postings']:
             CompletedActivity.objects.create(
                 activity=theActivity,
                 user=theUser,
-                date=self.cleaned_data['postings'].date,
-                comment=self.cleaned_data['postings'].comment
+                date=posting.date,
+                comment=posting.comment
             )
 
+
+class PostingData:
+    def __init__(self, date, comment):
+        self.date = date
+        self.comment = comment
 
 class EditActivity(forms.Form):
     def __init__(self, theUser, theActivity, *args, **kwargs):
@@ -96,11 +91,11 @@ class EditActivity(forms.Form):
             except:
                 self.initial[comment] = ""
             date = 'Posting_Date_%s' % (i + 1,)
-            self.fields[date] = forms.DateTimeField(help_text="Enter a date between now.")
+            self.fields[date] = forms.DateTimeField(help_text="Enter a Date.")
             comment = 'Posting_Comment_%s' % (i + 1,)
-            self.fields[comment] = forms.CharField(help_text="Like and Subscribe and leave a comment right here.")
-        date = forms.DateField(help_text="Enter a date between now.")
-        comment = forms.CharField(help_text="Like and Subscribe and leave a comment right here.")
+            self.fields[comment] = forms.CharField(help_text="Enter a comment.")
+        date = forms.DateField(help_text="Enter a date.", required=False)
+        comment = forms.CharField(help_text="Enter a comment", required=False)
 
     def clean_date(self):
         data = self.cleaned_data['date']
@@ -115,37 +110,25 @@ class EditActivity(forms.Form):
 
     def clean(self):
         postings = []
-        i = 0
-        comment_field_name = f'comment_{i}'
-        date_field_name = f'comment_{i}'
-        while self.cleaned_data.get(comment_field_name):
-            comment = self.cleaned_data[comment_field_name]
-            if comment in postings:
-                self.add_error(comment_field_name, 'Duplicate')
-            else:
-                postings.append(comment)
-            i += 1
-            comment_field_name = f'comment_{i}'
+        i = 1
+        date_field_name = f'Posting_Date_{i}'
+        comment_field_name = f'Posting_Comment_{i}'
         while self.cleaned_data.get(date_field_name):
-            date = self.clean_date()
-            if date in postings:
-                self.add_error(comment_field_name, 'Duplicate')
-            else:
-                postings.append(date)
+            cleaned_date = self.cleaned_data[date_field_name]
+            cleaned_comment = self.cleaned_data[comment_field_name]
+            this_post = PostingData(cleaned_date,cleaned_comment)
+            postings.append(this_post)
             i += 1
-            date_field_name = f'date_{i}'
+            date_field_name = f'Posting_Date_{i}'
+            comment_field_name = f'Posting_Comment_{i}'
         self.cleaned_data['postings'] = postings
 
     def save(self, theUser, theActivity):
-        posting = self.instance
-        posting.date = self.cleaned_data["date"]
-        posting.comment = self.cleaned_data["comment"]
-
-        posting.postings_set.all(user=theUser, activity=theActivity).delete()
+        CompletedActivity.objects.filter(user=theUser, activity=theActivity).delete()
         for posting in self.cleaned_data['postings']:
             CompletedActivity.objects.create(
                 activity=theActivity,
                 user=theUser,
-                date=self.cleaned_data['postings'].date,
-                comment=self.cleaned_data['postings'].comment
+                date=posting.date,
+                comment=posting.comment
             )

@@ -4,7 +4,7 @@ from django.db.models import Sum
 from django.urls import reverse
 import datetime
 from wellness.forms import PostActivity, EditActivity
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from wellness.models import Activity, CompletedActivity, Profile
 
 def index(request):
@@ -61,40 +61,38 @@ def post(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'post.html', context=context)
 
-def postact(request, pk):
+def postact(request, act_id):
     home_user = Profile.objects.get(pk=1)
-    activity = Activity.objects.get(pk=pk)
+    act = Activity.objects.get(pk=act_id)
     if request.method == 'POST':
-
-        form = PostActivity(home_user, activity)
+        form = PostActivity(home_user, act, request.POST)
         if form.is_valid():
-            new = CompletedActivity(activity=activity, user=home_user, comment=form.cleaned_data['comment'],
-                                    date=form.cleaned_data['date'])
-            new.save()
+            form.save(home_user, act)
             return HttpResponseRedirect(reverse('post'))
+        else:
+            return HttpResponse("you failed, big L")
     else:
         from datetime import timezone
-
-        form = PostActivity(theUser=home_user, theActivity=activity,initial={'date': "", 'comment': ""})
-
-    context = {
-        'huser': home_user,
-        'Lname': home_user.user.last_name,
-        'Fname': home_user.user.first_name,
-        'form': form,
-        'activity': activity,
-    }
+        form = PostActivity(home_user, act)
+        context = {
+            'huser': home_user,
+            'Lname': home_user.user.last_name,
+            'Fname': home_user.user.first_name,
+            'form': form,
+            'activity': act,
+        }
     return render(request, 'postact.html', context=context)
 
 def editpost(request, act_id):
     home_user = Profile.objects.get(pk=1)
     act = Activity.objects.get(pk=act_id)
     if request.method == 'POST':
-        form = EditActivity(home_user, act)
+        form = EditActivity(home_user, act, request.POST)
         if form.is_valid():
-            form = EditActivity(home_user, act, request.GET)
             form.save(home_user, act)
             return HttpResponseRedirect(reverse('index'))
+        else:
+            return HttpResponse("you failed, big L")
     else:
         from datetime import timezone
         form = EditActivity(home_user, act)
