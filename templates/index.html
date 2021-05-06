@@ -1,27 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
-    <style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-
-}
-caption {
-    caption-side: top;
-    color: black;
-    font-size:24px;
-}
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'postingcolors.css' %}">
   <h1>Wellness Program Home</h1>
-  <h2>Dynamic content</h2>
-  <ul>
-    <li><strong>Activities:</strong> {{ num_activities }}</li>
-  </ul>
 
     {%  if activity_list %}
     <table style="width:100%">
@@ -32,6 +14,7 @@ caption {
         <td>Points Value</td>
         <td>Points Earned</td>
         <td>Category</td>
+        <td>&#9998</td>
     </tr>
         {%  for activity in activity_list %}
         <tr>
@@ -39,9 +22,9 @@ caption {
             <td>{{ activity.count }} </td>
             <td>{{ activity.activity__value }} </td>
             <td>{{ activity.earned }} </td>
-            <td>{{ activity.activity__group }} </td>
-        <td scope="row"> <a href="{%  url 'editpost' activity.activity_id %}">Edit</a></td>
-        </tr><
+            <td class="{{ activity.activity__group }}">{{ activity.activity__group }} </td>
+        <td scope="row"> <a href="{%  url 'editpost' activity.activity_id %}">&#9998</a></td>
+        </tr>
         {% endfor %}
     </table>
     {%  else %}

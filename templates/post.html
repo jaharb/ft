@@ -1,26 +1,33 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
-    <style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-td {
-    padding: 5px;
-
-}
-caption {
-    caption-side: top;
-    color: black;
-    font-size:24px;
-}
-    </style>
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'postingcolors.css' %}">
     {%  if allactivites %}
     <table style="width:100%">
-    <caption> List of Activities</caption>
+    <caption> List of Activities</caption> <caption style=font-size:14px >
+        Filters:
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" value="" id="PH" name="btnradio" style="display:none">
+            <label class="btn btn-primary" for="PH">Physical</label>
+             <input type="radio" class="btn-check" value="" id="SP" name="btnradio" style="display:none">
+            <label class="btn btn-primary" for="PH">Spiritual</label>
+             <input type="radio" class="btn-check" value="" id="FI" name="btnradio" style="display:none">
+            <label class="btn btn-primary" for="PH">Financial</label>
+            <input type="radio" class="btn-check" value="" id="OC" name="btnradio" style="display:none">
+            <label class="btn btn-primary btn-check" for="OC">Occupational</label>
+            <input type="radio" class="btn-check" value="" id="PE" name="btnradio" style="display:none">
+            <label class="btn btn-primary" for="PH">Personal</label>
+            <input type="radio" class="btn-check" value="" id="NA" name="btnradio" style="display:none">
+            <label class="btn btn-primary" for="PH">N/A</label>
+        </div>
+ <!--     PHYSICAL = 'PH'
+    SPIRITUAL = 'SP'
+    FINANCIAL = 'FI'
+    OCCUPATIONAL = 'OC'
+    PERSONAL = 'PE'
+    NA = 'NA'-->
+    </caption>
     <tr>
         <td>Activity Name</td>
         <td>Details</td>
@@ -30,14 +37,16 @@ caption {
         <td>Post/Add Activity</td>
     </tr>
         {%  for activity in allactivites %}
+
         <tr>
+
             <td>{{ activity.name }} </td>
             <td>{{ activity.details }} </td>
             <td>{{ activity.value }} </td>
             <td>{{ activity.max_complete }} </td>
-            <td>{{ activity.group }} </td>
-            <td scope="row"> <a href="{% url 'postact' activity.id %}"> +</a> </td>
-        </tr><
+            <td class="{{ activity.group }}">{{ activity.group }} </td>
+                <td scope="row"> <a href="{% url 'postact' activity.id %}"> +</a> </td>
+        </tr>
         {% endfor %}
     </table>
     {%  else %}

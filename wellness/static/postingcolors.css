@@ -1,0 +1,49 @@
+.PH {
+    background-color: darkred;
+    color: white;
+}
+.SP {
+    background-color: lightblue;
+}
+.FI {
+    background-color: chartreuse;
+}
+.OC {
+    background-color: indigo;
+    color: white;
+}
+.PE {
+    background-color: darkgoldenrod;
+}
+.NA {
+
+}
+.btn {
+  color: white;
+  background-color: orange;
+  border-color: darkOrange;
+}
+.btn:hover {
+  color: white;
+  background-color: orange;
+  border-color: darkOrange;
+}
+.btn:active,
+.btn:target {
+  color: white;
+  background-color: darkOrange;
+  border-color: darkOrange;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td {
+    padding: 5px;
+
+}
+caption {
+    caption-side: top;
+    color: black;
+    font-size:24px;
+}
