@@ -10,7 +10,7 @@ from wellness.models import Activity, CompletedActivity, Profile
 def index(request):
     """View function for home page of site."""
     home_user = Profile.objects.get(pk=1)
-    num_activities = Activity.objects.count()
+    """num_activities = Activity.objects.count()"""
     Cactivity = CompletedActivity.objects.filter(user=home_user)
     UActivity = Cactivity.values('activity_id', 'activity__name', 'activity__value', 'activity__group').annotate \
     (count=Count('activity__name'), earned=Sum('activity__value'))
@@ -28,7 +28,7 @@ def index(request):
         'huser': home_user,
         'Lname' : home_user.user.last_name,
         'Fname': home_user.user.first_name,
-        'num_activities': num_activities,
+        'num_activities': 1,
         'activity_list' : UActivity,
         "times_completed" : TimesCompelted
     }
@@ -38,6 +38,7 @@ def index(request):
 def post(request):
     """View function for post page of site."""
     home_user = Profile.objects.get(pk=1)
+
     num_activities = Activity.objects.count()
     AllActivites = Activity.objects.all()
 
