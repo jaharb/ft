@@ -3,9 +3,9 @@ from django.db.models import Count
 from django.db.models import Sum
 from django.urls import reverse
 import datetime
-from wellness.forms import PostActivity, EditActivity
+from wellness.forms import PostActivity, EditActivity, Filter
 from django.http import HttpResponseRedirect, HttpResponse
-from wellness.models import Activity, CompletedActivity, Profile
+from wellness.models import Activity, CompletedActivity, Profile, Stipend
 
 def index(request):
     """View function for home page of site."""
@@ -14,6 +14,21 @@ def index(request):
     Cactivity = CompletedActivity.objects.filter(user=home_user)
     UActivity = Cactivity.values('activity_id', 'activity__name', 'activity__value', 'activity__group').annotate \
     (count=Count('activity__name'), earned=Sum('activity__value'))
+    Points = 0
+    Stipends = Stipend.objects.all()
+    activeStipend = Stipend.objects.get(pk=1)
+    nextStipend = Stipend.objects.get(pk=1)
+    value = 0
+    for activity in Cactivity:
+        Points += activity.activity.value
+    for stipend in Stipends:
+        if stipend.pointsvalue > Points:
+            nextStipend = stipend
+            activeStipend = Stipend.objects.get(pk=(nextStipend.pk - 1))
+            value = Points / nextStipend.pointsvalue
+            break
+
+
     TimesCompelted = Cactivity.annotate(count=Count('activity__name'))
     # Generate counts of some of the main objects
 
@@ -25,6 +40,10 @@ def index(request):
 
 
     context = {
+        'percent_Value': value * 100,
+        'Next_Stipend' : nextStipend,
+        'Active_Stipend': activeStipend,
+        'Points': Points,
         'huser': home_user,
         'Lname' : home_user.user.last_name,
         'Fname': home_user.user.first_name,
@@ -38,12 +57,13 @@ def index(request):
 def post(request):
     """View function for post page of site."""
     home_user = Profile.objects.get(pk=1)
-
     num_activities = Activity.objects.count()
     AllActivites = Activity.objects.all()
+    if request.method == 'POST':
+        form = Filter(request.POST)
+    else:
+        form = Filter()
 
-
-    # Generate counts of some of the main objects
 
 
 
@@ -57,6 +77,7 @@ def post(request):
         'Lname' : home_user.user.last_name,
         'Fname': home_user.user.first_name,
         'allactivites': AllActivites,
+        'form' : form,
     }
 
     # Render the HTML template index.html with the data in the context variable

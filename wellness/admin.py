@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import Profile, Activity, CompletedActivity, Reminders
+from .models import Profile, Activity, CompletedActivity, Reminders, Stipend
 
 
 class AllActsAdmin(admin.ModelAdmin):
@@ -16,6 +16,7 @@ class CompActsAdmin(admin.ModelAdmin):
 
 admin.site.register(Activity, AllActsAdmin)
 admin.site.register(Profile)
+admin.site.register(Stipend)
 admin.site.register(CompletedActivity)
 admin.site.register(Reminders)
 

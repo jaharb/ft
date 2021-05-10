@@ -92,3 +92,10 @@ class Reminders(models.Model):
 
     def __str__(self):
         return self.name
+
+class Stipend(models.Model):
+    stipendvalue = models.IntegerField()
+    pointsvalue = models.IntegerField()
+
+    def __str__(self):
+        return "Stipend: $" + self.stipendvalue.__str__() + ", Points: " + self.pointsvalue.__str__()
