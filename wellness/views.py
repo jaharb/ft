@@ -129,4 +129,3 @@ def editpost(request, act_id):
         return render(request, 'postact.html', context=context)
 
 
-
