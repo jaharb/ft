@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{% load static %}
   {% block title %}<title>Wellness</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,25 +12,30 @@
 </head>
 <body>
       <nav class="navbar navbar-light" style="background-color: #2d003d; margin: 10px 1px 10px 10px">
-        <a class="navbar-brand mx-0" href="">FTLOGOHERE</a>
+        <a class="navbar-brand mx-0" href=""><img src="{% static 'images/smolftlogo.png' %}" alt="FT Logo"></a>
           <div class="d-inline-block">
           <span class="navbar-text" style="color: #ffffff">
         Hello, {{ Lname }}, {{ Fname }}
          </span>
           </div>
           <div class="d-inline-block">
-          <button type="button" class="btn btn-1" style="background-color: white; margin: 10px 10px 10px 10px">
-            User Info
-          </button>
+              <a href=" {% url 'index' %}" type="button">
+                  <button style="border-radius: 12px">Home</button>
+              </a>
           </div>
           <div class="d-inline-block">
-          <button type="button" class="btn btn-2" style="background-color: white; margin: 10px 10px 10px 10px">
-            Post Activity
-          </button>
+          <a href=" {% url 'userinfo' %}" type="button">
+              <button style="border-radius: 12px">User Info</button>
+          </a>
           </div>
-          <button type="button" class="btn btn-3" style="background-color: white"; onclick="location.href = 'accounts/login/';">
-            Logout
-          </button>
+          <div class="d-inline-block">
+              <a href=" {% url 'post' %}" type="button">
+                  <button style="border-radius: 12px">Post Activity</button>
+              </a>
+          </div>
+          <a href=" {% url 'login' %}" type="button">
+            <button style="border-radius: 12px">Logout</button>
+          </a>
       </nav>
 
 
