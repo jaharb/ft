@@ -132,3 +132,5 @@ class EditActivity(forms.Form):
                 date=posting.date,
                 comment=posting.comment
             )
+class Filter(forms.Form):
+        filter = forms.CharField(max_length=2, choices=Activity.GROUP_CHOICES, default='NA')

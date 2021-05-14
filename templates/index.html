@@ -4,7 +4,11 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'postingcolors.css' %}">
   <h1>Wellness Program Home</h1>
-
+    <h2> Total Points: {{ Points }} Current Stipend: ${{ Active_Stipend.stipendvalue }}
+        Next Stipend: ${{ Next_Stipend.stipendvalue }}</h2>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: {{ percent_Value }}%"></div>
+</div>
     {%  if activity_list %}
     <table style="width:100%">
     <caption> Completed Activity List</caption>
